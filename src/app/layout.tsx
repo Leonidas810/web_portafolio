@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#4988BA]">
+      <body>
         {/* Layout UI */}
         {/* Place children where you want to render a page or nested layout */}
         <main>{children}</main>

@@ -22,13 +22,13 @@ export default function Page() {
   }]
 
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-screen bg-[#4988BA]">
       <div className="h-full w-full grid sm:grid-cols-2 grid-rows-2 sm:grid-rows-1 items-center justify-items-center">
         {/*Left */}
         <div>
           <div className="grid gap-y-10">
             <div className="text-white text-center sm:text-left">
-              <h2 className="text-xl sm:text-3xl">Hello, I'm Leonardo Lopez P.</h2>
+              <h2 className="text-xl sm:text-3xl">Hello, I&apos;m Leonardo Lopez P.</h2>
               <h1 className="text-6xl sm:text-8xl"><b>Fullstack</b></h1>
               <h1 className="text-[#2D5576] text-6xl sm:text-8xl"><b>Developer</b></h1>
             </div>
