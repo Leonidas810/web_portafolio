@@ -1,6 +1,10 @@
+'use client'
+import { useState } from "react"
 import { Button, Icon } from "@/components/atoms"
 
 const Page = () => {
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const technologies = ['CSS', 'Tailwind', 'Javascript', 'Typescript', 'React', 'React Native', 'Next.js', 'Vue.js', 'Angular', 'Node.js', 'php', 'Laravel', 'Git/Github', 'MySQL', 'MongoDB', 'Docker']
 
@@ -40,6 +44,24 @@ const Page = () => {
         institute: 'CNS - IPICYT'
     }]
 
+    const onClickDownload = async () => {
+        try {
+            setIsLoading(true)
+            const response = await fetch('/pdf/cv.pdf');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const pdfBlob = await response.blob();
+            const blobUrl = URL.createObjectURL(pdfBlob);
+            window.open(blobUrl);
+
+        } catch (err) {
+            console.error(err)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
         <div className="bg-white">
             <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] grid-rows-[auto] sm:grid-rows-1 gap-x-8 p-12 sm:p-16">
@@ -60,11 +82,11 @@ const Page = () => {
                     </div>
                 </div>
                 {/*Right */}
-                <div className="grid grid-cols-2 sm:overflow-auto gap-8 sm:gap-y-4">
+                <div className="grid grid-cols-2 gap-8 sm:gap-y-4">
                     <div className="col-span-2">
                         <div className="flex justify-between mb-4">
                             <h1 className="text-primary-700 text-4xl">Leonardo López P.</h1>
-                            <Button variant="ghost">
+                            <Button disabled={isLoading} onClick={onClickDownload} variant="ghost">
                                 <Icon name="download" />Download
                             </Button>
                         </div>
