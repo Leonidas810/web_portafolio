@@ -1,3 +1,5 @@
+import "./globals.css"
+
 export default function DashboardLayout({
   children,
 }: {
@@ -5,7 +7,7 @@ export default function DashboardLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-[#4988BA]">
         {/* Layout UI */}
         {/* Place children where you want to render a page or nested layout */}
         <main>{children}</main>
