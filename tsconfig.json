@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/atoms/*":["./src/components/atoms"],
+      "@/molecules/*":["./src/components/molecules"],
     }
   },
   "include": [

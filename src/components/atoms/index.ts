@@ -1,3 +1,4 @@
-import { Img } from "./Img.atom"
+import { Button } from "./Button.atom";
+import { Icon } from "./Icon/Icon.atom";
 
-export { Img };
+export { Button, Icon };
