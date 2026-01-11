@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { IconTypes } from "@/components/atoms/Icon/Icon";
 
@@ -31,7 +30,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="h-screen w-screen bg-primary-500">
+    <div className="h-dvh w-full bg-primary-500">
       <div className="h-full w-full grid sm:grid-cols-2 grid-rows-2 sm:grid-rows-1 items-center justify-items-center">
         {/*Left */}
         <div>
@@ -51,14 +50,14 @@ export default function Page() {
               {Buttons.map(
                 (b, i) =>
                   b?.href ? (
-                    <LinkButton key={i} href={b.href}>
+                    <LinkButton key={i} href={b.href} {...b?.className ? {className:b.className} : {}} buttonClassName='w-full'>
                       {b.text}
                       <Icon name={b.icon} size="xl" className="ml-1" />
                     </LinkButton>
                   ) : (
-                    <Button key={i}>
+                    <Button key={i} {...b?.className ? {className:b.className} : {}}>
                       {b.text}
-                      <Icon name={b.icon} size="xl" className="ml-1" />
+                      <Icon name={b.icon} size="xl" className="ml-1"  />
                     </Button>
                   )
               )}

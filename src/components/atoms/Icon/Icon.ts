@@ -1,9 +1,9 @@
 import type { IconType } from "react-icons";
-import { AiOutlineFileText, AiOutlineFolderOpen, AiOutlineUser, AiOutlineFolder,AiOutlineExport,AiOutlineMenu,AiFillHome } from "react-icons/ai";
+import { AiOutlineFileText, AiOutlineFolderOpen, AiOutlineUser, AiOutlineFolder,AiOutlineExport,AiOutlineMenu,AiFillHome,AiOutlineCloseCircle  } from "react-icons/ai";
 import { RiFileDownloadFill } from "react-icons/ri";
 
 
-export type IconTypes = 'user' | 'paper' | 'folder' | 'openFolder' | 'download' | 'url' | 'menu' | 'home';
+export type IconTypes = 'user' | 'paper' | 'folder' | 'openFolder' | 'download' | 'url' | 'menu' | 'home' | 'close';
 
 export const IconRecord: Partial<Record<IconTypes, IconType>> = {
     user: AiOutlineUser,
@@ -13,5 +13,6 @@ export const IconRecord: Partial<Record<IconTypes, IconType>> = {
     download:RiFileDownloadFill,
     url:AiOutlineExport,
     menu:AiOutlineMenu,
-    home:AiFillHome
+    home:AiFillHome,
+    close:AiOutlineCloseCircle 
 };
