@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button, Icon } from "@/components/atoms";
+import { Page as PageTemplate } from "@/templates/";
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -89,8 +90,8 @@ const Page = () => {
   };
 
   return (
-    <div className="bg-white">
-      <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] grid-rows-[auto] sm:grid-rows-1 gap-x-8 p-12 sm:p-16">
+    <PageTemplate className="bg-white">
+      <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] grid-rows-[auto] sm:grid-rows-1 gap-x-8">
         {/*Left */}
         <div className="grid row-start-2 sm:row-start-1 gap-y-2 max-h-[90vh] p-4">
           <h2 className="text-primary-700">Mexico, San Luis Potosi</h2>
@@ -187,7 +188,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 };
 

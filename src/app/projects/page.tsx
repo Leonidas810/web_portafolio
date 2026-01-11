@@ -1,4 +1,5 @@
 import { Card } from "@/molecules/";
+import { Page as PageTemplate } from "@/templates/";
 
 const Page = () => {
   const projectsMap = [
@@ -11,8 +12,8 @@ const Page = () => {
   ];
 
   return (
-    <div className="bg-white">
-      <div className="grid p-12 sm:p-16 gap-y-4">
+    <PageTemplate className="bg-white">
+      <div className="grid">
         <div>
           <h1 className="text-primary-700 text-4xl mb-2">Projects</h1>
           <p>Check out some of my latest projects</p>
@@ -23,7 +24,7 @@ const Page = () => {
           ))}
         </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 };
 
