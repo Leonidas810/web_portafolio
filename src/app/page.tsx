@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IconTypes } from "@/components/atoms/Icon/Icon";
 
 import { Button, Icon } from "@/components/atoms";
+import { LinkButton } from "@/components/molecules";
 
 export default function Page() {
   const Buttons: {
@@ -48,24 +49,18 @@ export default function Page() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-4">
               {Buttons.map(
-                (b, i) => (
-                  <Button
-                    key={i}
-                    {...(b?.className ? { className: b.className } : {})}
-                  >
-                    {b?.href ? (
-                      <Link href={b.href} className="flex items-center justify-center">
-                        {b.text}
-                        <Icon name={b.icon} size="xl" className="ml-1" />
-                      </Link>
-                    ) : (
-                      <>
-                        {b.text}
-                        <Icon name={b.icon} size="xl" className="ml-1" />
-                      </>
-                    )}
-                  </Button>
-                )
+                (b, i) =>
+                  b?.href ? (
+                    <LinkButton key={i} href={b.href}>
+                      {b.text}
+                      <Icon name={b.icon} size="xl" className="ml-1" />
+                    </LinkButton>
+                  ) : (
+                    <Button key={i}>
+                      {b.text}
+                      <Icon name={b.icon} size="xl" className="ml-1" />
+                    </Button>
+                  )
               )}
             </div>
           </div>

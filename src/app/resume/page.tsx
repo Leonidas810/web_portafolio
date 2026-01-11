@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button, Icon } from "@/components/atoms";
-import { Page as PageTemplate } from "@/templates/";
+import { Page as PageTemplate } from "@/templates/index";
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

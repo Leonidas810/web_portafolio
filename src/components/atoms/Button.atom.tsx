@@ -1,7 +1,7 @@
 import { Size } from "@/types/Common.types"
 
 type Variant = "primary" | "solid" | "ghost";
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode
     variant?: Variant
     size?: Size

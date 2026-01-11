@@ -1,5 +1,5 @@
-import { Card } from "@/molecules/";
-import { Page as PageTemplate } from "@/templates/";
+import { Card } from "@/molecules/index";
+import { Page as PageTemplate } from "@/templates/index";
 
 const Page = () => {
   const projectsMap = [
