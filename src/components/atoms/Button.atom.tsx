@@ -15,10 +15,10 @@ export const Button = ({
     className,
     ...props
 }: ButtonProps) => {
-    const base = "cursor-pointer inline-flex items-center justify-center rounded-xl font-bold transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed ";
+    const base = "inline-flex items-center justify-center rounded-xl font-bold transition hover:scale-105 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed disabled:scale-100 disabled:bg-transparent";
 
     const variantMap: Record<Variant, string> = {
-        primary: "text-primary-700 bg-white border border-primary-700 shadow-lg/15 hover:bg-blue-50 active:bg-blue-100 ",
+        primary: "text-primary-700 bg-white border border-primary-700 shadow-lg/15 hover:bg-blue-50 active:bg-blue-100",
         solid: "text-white bg-blue-600 hover:bg-blue-700",
         ghost: "bg-transparent text-primary-700 hover:bg-blue-50",
     };

@@ -13,9 +13,9 @@ const Page = () => {
 
   return (
     <PageTemplate className="bg-white">
-      <div className="grid">
+      <div className="grid gap-y-4">
         <div>
-          <h1 className="text-primary-700 text-4xl mb-2">Projects</h1>
+          <h1 className="text-primary-700 text-4xl mb-4">Projects</h1>
           <p>Check out some of my latest projects</p>
         </div>
         <div className="grid sm:grid-cols-3 gap-4 max-h-screen">
