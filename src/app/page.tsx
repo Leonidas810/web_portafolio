@@ -1,25 +1,33 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { IconTypes } from "@/components/atoms/Icon/Icon";
 
 import { Button, Icon } from "@/components/atoms";
 
 export default function Page() {
-
-
-  const Buttons: { text: string, icon: IconTypes, className?: string }[] = [{
-    text: 'About me',
-    icon: 'user'
-  },
-  {
-    text: 'My resume',
-    icon: 'paper'
-  },
-  {
-    text: 'My work',
-    icon: 'folder',
-    className: 'col-span-2 sm:col-span-1'
-  }]
+  const Buttons: {
+    text: string;
+    icon: IconTypes;
+    href?: string;
+    className?: string;
+  }[] = [
+    {
+      text: "About me",
+      icon: "user",
+    },
+    {
+      text: "My resume",
+      icon: "paper",
+      href: "/resume",
+    },
+    {
+      text: "My work",
+      icon: "folder",
+      href: "/projects",
+      className: "col-span-2 sm:col-span-1",
+    },
+  ];
 
   return (
     <div className="h-screen w-screen bg-primary-500">
@@ -28,23 +36,46 @@ export default function Page() {
         <div>
           <div className="grid gap-y-10">
             <div className="text-white text-center sm:text-left">
-              <h2 className="text-xl sm:text-3xl">Hello, I&apos;m Leonardo Lopez P.</h2>
-              <h1 className="text-6xl sm:text-8xl"><b>Fullstack</b></h1>
-              <h1 className="text-primary-700 text-6xl sm:text-8xl"><b>Developer</b></h1>
+              <h2 className="text-xl sm:text-3xl">
+                Hello, I&apos;m Leonardo Lopez P.
+              </h2>
+              <h1 className="text-6xl sm:text-8xl">
+                <b>Fullstack</b>
+              </h1>
+              <h1 className="text-primary-700 text-6xl sm:text-8xl">
+                <b>Developer</b>
+              </h1>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-4">
-              {Buttons.map((b, i) => (
-                <Button key={i} {...b?.className ? { className: b.className } : {}}>
-                  {b.text}<Icon name={b.icon} size="xl" className="ml-1" />
-                </Button>
-              ))}
+              {Buttons.map(
+                (b, i) => (
+                  <Button
+                    key={i}
+                    {...(b?.className ? { className: b.className } : {})}
+                  >
+                    {b?.href ? (
+                      <Link href={b.href} className="flex items-center justify-center">
+                        {b.text}
+                        <Icon name={b.icon} size="xl" className="ml-1" />
+                      </Link>
+                    ) : (
+                      <>
+                        {b.text}
+                        <Icon name={b.icon} size="xl" className="ml-1" />
+                      </>
+                    )}
+                  </Button>
+                )
+              )}
             </div>
           </div>
         </div>
         {/*Right */}
         <div>
-          <div className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] 2xl:w-[600px] 2xl:h-[600px]
-                bg-primary-600 border-4 border-white z-10">
+          <div
+            className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] 2xl:w-[600px] 2xl:h-[600px]
+                bg-primary-600 border-4 border-white z-10"
+          >
             <Image
               src="/img/ProfileImg.webp"
               alt="Profile picture"
@@ -57,7 +88,6 @@ export default function Page() {
               priority
             />
           </div>
-
         </div>
         {/*Background */}
         <div className="absolute top-0 left-1/2 bg-primary-700 w-1/3 h-1/3 hidden sm:block" />
