@@ -1,13 +1,14 @@
 "use client";
 import { Button, Icon } from "@/atoms/index";
 import { LinkButton } from "@/molecules/index";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { useWindowWidth } from "@/hooks";
 
+import { IconTypes } from "@/atoms/Icon/Icon";
+
 export const Navigate = () => {
-  const container  = useRef(null)
   const pathname = usePathname();
 
   const windowWidth = useWindowWidth() ?? 0;
@@ -22,75 +23,74 @@ export const Navigate = () => {
     setIsOpen(false);
   };
 
-  const onHandleMenu = () =>{
-    setIsOpen((p)=>!p)
-  }
+  const onHandleMenu = () => {
+    setIsOpen((p) => !p);
+  };
+
+  const routesMap: {
+    name: string;
+    label?: string;
+    icon?: IconTypes;
+    href: string;
+    className?: string;
+  }[] = [
+    {
+      name: "home",
+      icon: "home",
+      href: "/",
+    },
+    {
+      name: "resume",
+      label: "Resume",
+      href: "/resume",
+    },
+    {
+      name: "projects",
+      label: "Projects",
+      href: "/projects",
+    },
+  ];
 
   const commonClasses = `${
     isOpen ? "visible" : "invisible"
   } absolute transition-transform`;
 
   const isMobile = windowWidth < 640;
-  const isHeroSection = pathname === '/'
+  const isHeroSection = pathname === "/";
 
   return (
-    <div
-      ref={container}
+    <nav
       hidden={isHeroSection}
-      onMouseLeave={onCloseMenu}
-      className="fixed w-full h-12 bottom-0 sm:top-6 bg-white sm:bg-transparent flex items-center z-10"
+      className="fixed sm:absolute w-full h-full z-10"
     >
-      <div className="absolute left-1/2 -translate-x-1/2 w-1/4">
-        <div className="relative flex items-center justify-center">
-          <LinkButton
-            href="/resume"
-            className={`${commonClasses} left-1/4 ${
-              isOpen ? "-translate-x-24 sm:-translate-x-16" : "translate-x-0"
-            }`}
-            disabled={pathname === "/resume"}
-            variant={isMobile ? "primary" : "ghost"}
-          >
-            Resume
-          </LinkButton>
-          {isMobile && (
-            <LinkButton
-              href="/"
-              className={`${commonClasses} left-1/4 ${
-                isOpen ? "-translate-y-10" : "translate-y-0"
-              }`}
-              variant={'primary'}
-            >
-                <Icon name={'home'} />
-            </LinkButton>
-          )}
-          {isMobile ? (
-            <Button onClick={onHandleMenu}>
-              <Icon name={isOpen ? 'close' : "menu"} />
-            </Button>
-          ) : (
-            <LinkButton
-              href="/"
-              onMouseOver={onOpenMenu}
-              variant="ghost"
-              className={`${
-                isOpen ? "rotate-360" : ""
-              } z-10 transition-transform p-2 sm:p-0`}
-            >
-              <Icon name={isOpen ? "home" : "menu"} />
-            </LinkButton>
-          )}
-          <LinkButton
-            href="/projects"
-            disabled={pathname === "/projects"}
-            className={`link ${commonClasses} right-1/4 ${
-              isOpen ? "translate-x-24 sm:translate-x-16" : "translate-x-0"
-            }`}
-            variant={isMobile ? "primary" : "ghost"}
-          >
-            Projects
-          </LinkButton>
-        </div>
+      <div
+        onMouseLeave={onCloseMenu}
+        className="absolute h-auto w-auto top-5 sm:bottom-5 right-1/2 sm:right-5 translate-x-1/2 flex flex-col gap-y-2 items-end"
+      >
+        {/* Routes */}
+        <ol className="flex flex-col-reverse items-end gap-y-2">
+          {routesMap.map((r, i) => (
+            <li key={i}>
+              <LinkButton
+                href={r.href}
+                className={`transition-all duration-300 ease-out
+                ${
+                  isOpen
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-4 scale-95 pointer-events-none"
+                }`}
+              >
+                {r.label}
+                {r?.icon && <Icon name={r.icon} />}
+              </LinkButton>
+            </li>
+          ))}
+        </ol>
+        {/* Action menu */}
+        <Button onClick={onHandleMenu}>
+          <Icon name={isOpen ? "close" : "menu"} />
+        </Button>
       </div>
-    </div>
+    </nav>
   );
 };
