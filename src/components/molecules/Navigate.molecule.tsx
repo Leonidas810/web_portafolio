@@ -29,10 +29,10 @@ export const Navigate = () => {
 
   useEffect(() => {
     const closeMenu = () => {
-      if (windowWidth && windowWidth > 640) setIsOpen(false)
+      setIsOpen(false)
     }
     closeMenu();
-  }, [windowWidth])
+  }, [windowWidth, pathname])
 
   const isMobile = windowWidth < 640;
   const isHeroSection = pathname === "/";
@@ -65,7 +65,7 @@ export const Navigate = () => {
   return (
     <nav
       hidden={isHeroSection}
-      className="fixed sm:absolute w-full h-full z-10"
+      className="fixed bottom-0 right-0 sm:top-16 sm:left-1/2 h-12 w-12 z-10"
     >
       <div
         {...!isMobile ? { onMouseLeave: onCloseMenu } : {}}
@@ -95,7 +95,7 @@ export const Navigate = () => {
         {isMobile ?
           <Button
             variant={'primary'}
-            className={`z-20 ${isOpen
+            className={`${isOpen
               ? "scale-100"
               : "scale-95"
               }`}
