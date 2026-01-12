@@ -1,11 +1,19 @@
+'use client'
 import Image from "next/image";
 
 import { IconTypes } from "@/components/atoms/Icon/Icon";
+import { useRef } from "react";
 
 import { Button, Icon } from "@/components/atoms";
 import { LinkButton } from "@/components/molecules";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 export default function Page() {
+
+  const textContainer = useRef<HTMLDivElement>(null)
+
   const Buttons: {
     text: string;
     icon: IconTypes;
@@ -29,13 +37,26 @@ export default function Page() {
     },
   ];
 
+useGSAP(
+  () => {
+    gsap.from("h1, h2", {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.2,
+    });
+  },
+  { scope: textContainer }
+);
+
   return (
     <div className="h-dvh w-full bg-primary-500">
       <div className="h-full w-full grid sm:grid-cols-2 grid-rows-2 sm:grid-rows-1 items-center justify-items-center">
         {/*Left */}
         <div>
           <div className="grid gap-y-10">
-            <div className="text-white text-center sm:text-left">
+            <div ref={textContainer} className="text-white text-center sm:text-left">
               <h2 className="text-xl sm:text-3xl">
                 Hello, I&apos;m Leonardo Lopez P.
               </h2>

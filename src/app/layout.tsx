@@ -1,19 +1,20 @@
-import "./globals.css"
-import { Navigate } from "@/components/molecules"
+import "./globals.css";
+import { Navigate } from "@/components/molecules";
+import { TransitionProvider } from "@/providers/TransitionProvider";
 
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body>
-        {/* Layout UI */}
-        {/* Place children where you want to render a page or nested layout */}
-        <Navigate/>
-        <main>{children}</main>
+        <Navigate />
+        <TransitionProvider>
+          <main>{children}</main>
+        </TransitionProvider>
       </body>
     </html>
-  )
+  );
 }

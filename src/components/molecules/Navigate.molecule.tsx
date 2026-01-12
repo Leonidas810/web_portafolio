@@ -1,12 +1,13 @@
 "use client";
 import { Button, Icon } from "@/atoms/index";
 import { LinkButton } from "@/molecules/index";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { useWindowWidth } from "@/hooks";
 
 export const Navigate = () => {
+  const container  = useRef(null)
   const pathname = usePathname();
 
   const windowWidth = useWindowWidth() ?? 0;
@@ -34,9 +35,10 @@ export const Navigate = () => {
 
   return (
     <div
+      ref={container}
       hidden={isHeroSection}
       onMouseLeave={onCloseMenu}
-      className="fixed sm:absolute w-full h-18 bottom-0 sm:top-6 bg-white sm:bg-transparent flex items-center"
+      className="fixed w-full h-12 bottom-0 sm:top-6 bg-white sm:bg-transparent flex items-center z-10"
     >
       <div className="absolute left-1/2 -translate-x-1/2 w-1/4">
         <div className="relative flex items-center justify-center">
@@ -80,7 +82,7 @@ export const Navigate = () => {
           <LinkButton
             href="/projects"
             disabled={pathname === "/projects"}
-            className={`${commonClasses} right-1/4 ${
+            className={`link ${commonClasses} right-1/4 ${
               isOpen ? "translate-x-24 sm:translate-x-16" : "translate-x-0"
             }`}
             variant={isMobile ? "primary" : "ghost"}
