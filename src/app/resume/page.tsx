@@ -1,10 +1,8 @@
 "use client";
-import { useState } from "react";
 import { Button, Icon } from "@/components/atoms";
 import { Page as PageTemplate } from "@/templates/index";
 
 const Page = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const technologies = [
     "CSS",
@@ -132,7 +130,6 @@ const Page = () => {
             <div className="flex justify-between mb-4">
               <h1 className="text-primary-700 text-4xl">Leonardo López P.</h1>
               <Button
-                disabled={isLoading}
                 onClick={onClickDownload}
                 variant="ghost"
               >
