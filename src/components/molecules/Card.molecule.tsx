@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Icon } from "@/atoms/";
+import { Icon } from "@/atoms/index";
 
 interface Img {
   src: string;

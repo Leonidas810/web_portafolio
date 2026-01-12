@@ -1,5 +1,5 @@
 "use client";
-import { Button, Icon } from "@/components/atoms";
+import { Icon } from "@/components/atoms";
 import { IconTypes } from "@/components/atoms/Icon/Icon";
 import { LinkButton } from "@/components/molecules";
 import { Page as PageTemplate } from "@/templates/index";
