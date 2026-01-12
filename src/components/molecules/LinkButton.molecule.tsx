@@ -1,29 +1,51 @@
 import { Button } from "@/atoms/index";
 import Link from "next/link";
-
+import { CSSProperties, ReactNode } from "react";
 import { ButtonProps } from "../atoms/Button.atom";
-import { CSSProperties } from "react";
 
-interface LinkButtonProps extends ButtonProps  {
-    href:string
-    className?:string,
-    buttonClassName?:string,
-    children:React.ReactNode
-    style?:CSSProperties
+interface LinkButtonProps extends ButtonProps {
+  href: string;
+  className?: string;
+  buttonClassName?: string;
+  children: ReactNode;
+  style?: CSSProperties;
+  external?: boolean; // optional manual override
 }
 
 export const LinkButton = ({
-    href,
-    className,
-    style,
-    buttonClassName,
-    children,
-    ...rest
-}:LinkButtonProps) => {
+  href,
+  className,
+  style,
+  buttonClassName,
+  children,
+  external,
+  ...rest
+}: LinkButtonProps) => {
+  const isExternal = external || href.startsWith("http") || href.startsWith("//");
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className={className}
+        style={style}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          {...(buttonClassName ? { className: buttonClassName } : {})}
+          {...rest}
+        >
+          {children}
+        </Button>
+      </a>
+    );
+  }
+
   return (
     <Link href={href} className={className} style={style}>
       <Button
-        {...buttonClassName ? {className:buttonClassName} : {}}
+        {...(buttonClassName ? { className: buttonClassName } : {})}
         {...rest}
       >
         {children}

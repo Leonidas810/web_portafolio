@@ -1,5 +1,7 @@
 "use client";
 import { Button, Icon } from "@/components/atoms";
+import { IconTypes } from "@/components/atoms/Icon/Icon";
+import { LinkButton } from "@/components/molecules";
 import { Page as PageTemplate } from "@/templates/index";
 import Link from "next/link";
 
@@ -33,6 +35,25 @@ const Page = () => {
   ];
 
   const classesTitle = "text-primary-700 font-bold text-lg";
+
+
+
+  const contactMap: {
+    label: string
+    icon: IconTypes,
+    href: string
+  }[] = [
+      {
+        label: 'Github',
+        icon: 'github',
+        href: 'https://github.com/Leonidas810'
+      },
+      {
+        label: 'LinkedIn',
+        icon: 'linkedin',
+        href: 'https://www.linkedin.com/in/leonardo-lópez-pérez-1115a227a'
+      }
+    ]
 
   const educationMap: {
     name: string;
@@ -84,10 +105,6 @@ const Page = () => {
       },
     ];
 
-  const onClickDownload = async () => {
-    window.open("/pdf/cv.pdf");
-  };
-
   return (
     <PageTemplate className="bg-white">
       <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] grid-rows-[auto] sm:grid-rows-1 gap-x-8">
@@ -127,13 +144,22 @@ const Page = () => {
                 <h1 className=" text-4xl">Leonardo López P.</h1>
                 <h2 className="block sm:hidden">Mexico, San Luis Potosi</h2>
               </div>
-              <Button
-                onClick={onClickDownload}
+              <LinkButton
+                href="/pdf/cv.pdf"
                 variant="ghost"
               >
                 <Icon name="download" />
                 Download
-              </Button>
+              </LinkButton>
+            </div>
+            <div className="flex mb-2">
+              {contactMap.map((c, i) =>
+                <LinkButton key={i}
+                  href={c.href}
+                  variant="ghost"
+                >
+                  <Icon name={c.icon} size="xl" className="mr-2" />{c.label}
+                </LinkButton>)}
             </div>
             <p>
               Focused on performance, maintainability, and user experience, I am
