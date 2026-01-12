@@ -34,7 +34,7 @@ export const Navigate = () => {
     closeMenu();
   }, [windowWidth, pathname])
 
-  const isMobile = windowWidth < 640;
+  const isMobile = windowWidth < 768;
   const isHeroSection = pathname === "/";
 
   const routesMap: {
@@ -65,14 +65,14 @@ export const Navigate = () => {
   return (
     <nav
       hidden={isHeroSection}
-      className="fixed bottom-0 right-0 sm:top-16 sm:left-1/2 h-12 w-12 z-10"
+      className="fixed bottom-0 right-0 md:top-16 md:left-1/2 h-12 w-12 z-10"
     >
       <div
         {...!isMobile ? { onMouseLeave: onCloseMenu } : {}}
-        className="absolute bottom-5 sm:bottom-[94%] right-0 sm:right-1/2 -translate-x-1/3 sm:translate-x-1/2 flex flex-col gap-y-2 items-end"
+        className="absolute bottom-5 md:bottom-[94%] right-0 md:right-1/2 -translate-x-1/3 md:translate-x-1/2 flex flex-col gap-y-2 items-end"
       >
         {/* Routes */}
-        <ol className="sm:absolute sm:left-1/2 sm:-translate-x-1/2 flex flex-col-reverse sm:flex-row items-end sm:items-center gap-y-2 sm:gap-x-16">
+        <ol className="md:absolute md:left-1/2 md:-translate-x-1/2 flex flex-col-reverse md:flex-row items-end md:items-center gap-y-2 md:gap-x-16">
           {routesMap.map((r, i) => (
             <li key={i} {...r.className ? { className: r.className } : {}}>
               <LinkButton

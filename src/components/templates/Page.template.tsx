@@ -4,6 +4,6 @@ interface PageProps {
 }
 
 export const Page = ({ children, className }: PageProps) => {
-  const classes = `${className} px-8 sm:px-12 py-16 sm:py-20 min-h-dvh`;
+  const classes = `${className} px-8 md:px-12 py-12 md:py-20 min-h-dvh`;
   return <div className={classes}>{children}</div>;
 };
