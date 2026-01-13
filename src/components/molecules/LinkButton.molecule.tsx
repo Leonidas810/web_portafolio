@@ -9,7 +9,7 @@ interface LinkButtonProps extends ButtonProps {
   buttonClassName?: string;
   children: ReactNode;
   style?: CSSProperties;
-  external?: boolean; // optional manual override
+  external?: boolean;
 }
 
 export const LinkButton = ({

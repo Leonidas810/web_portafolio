@@ -2,14 +2,17 @@
 import { Button, Icon } from "@/atoms/index";
 import { LinkButton } from "@/molecules/index";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 
 import { useWindowWidth } from "@/hooks";
+
+import { isHomeRoute } from "@/utils/routing";
 
 import { IconTypes } from "@/atoms/Icon/Icon";
 
 export const Navigate = () => {
   const pathname = usePathname();
+  const { locale } = useParams<{ locale: string }>();
 
   const windowWidth = useWindowWidth() ?? 0;
 
@@ -35,7 +38,7 @@ export const Navigate = () => {
   }, [windowWidth, pathname])
 
   const isMobile = windowWidth < 768;
-  const isHeroSection = pathname === "/";
+  const isHeroSection = isHomeRoute(pathname, locale);
 
   const routesMap: {
     name: string;

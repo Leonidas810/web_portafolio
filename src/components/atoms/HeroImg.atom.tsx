@@ -1,18 +1,14 @@
-import Image from "next/image"
+'use client'
 
+import Image from "next/image"
+import { useState } from "react"
 interface HeroImgProps {
-    aboutMeOpen: boolean
+    heroImgText: string[]
+    aboutMeOpen?: boolean
 }
 
-export const HeroImg = ({ aboutMeOpen }: HeroImgProps) => {
-
-    const textArray: string[] = [
-        'Passionate about technology and the creation of digital solutions that solve real-world problems.',
-        'Experienced in building functional, scalable applications, working confidently across both frontend and backend development.',
-        'Driven by continuous learning and constant improvement, always exploring new tools and technologies to deliver clean, efficient, and high-quality software.',
-        '“Si puedes imaginarlo, puedes programarlo.” — Alejandro Taboada'
-    ];
-
+export const HeroImg = ({ aboutMeOpen = false, heroImgText }: HeroImgProps) => {
+    const [isAboutMeOpen, setAboutMeOpen] = useState<boolean>(false)
 
     return (
         <div
@@ -21,7 +17,7 @@ export const HeroImg = ({ aboutMeOpen }: HeroImgProps) => {
         >
             <div className={`w-full h-full overflow-auto ${aboutMeOpen ? "opacity-100 z-10" : "opacity-0 -z-10"}`}>
                 <div className="text-white grid gap-y-6 text-base md:text-base 2xl:text-2xl">
-                    {textArray.map((t, i) => <p key={i}>{t}</p>)}
+                    {heroImgText.map((t, i) => <p key={i}>{t}</p>)}
                 </div>
             </div>
             <Image

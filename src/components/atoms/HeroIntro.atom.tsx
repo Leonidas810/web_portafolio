@@ -4,7 +4,17 @@ import { useRef } from "react"
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react"
 
-export const HeroIntro = () => {
+interface HeroIntroProps {
+    name: string,
+    title: string,
+    subTitle: string
+}
+
+export const HeroIntro = ({
+    name,
+    title,
+    subTitle
+}: HeroIntroProps) => {
 
     const textContainer = useRef<HTMLDivElement>(null)
 
@@ -26,13 +36,13 @@ export const HeroIntro = () => {
     return (
         <div ref={textContainer} className="text-white text-center md:text-left z-10">
             <h2 className="text-xl md:text-2xl lg:text-3xl">
-                Hello, I&apos;m Leonardo Lopez P.
+                {name}
             </h2>
             <h1 className={`${h1Classes}`}>
-                <b>Fullstack</b>
+                <b>{title}</b>
             </h1>
             <h1 className={`text-primary-700 ${h1Classes}`}>
-                <b>Developer</b>
+                <b>{subTitle}</b>
             </h1>
         </div>
     )
