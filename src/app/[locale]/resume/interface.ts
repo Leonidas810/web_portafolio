@@ -1,6 +1,6 @@
 import { IconTypes } from "@/components/atoms/Icon/Icon";
 
-export type SectionsTypes = 'others' | 'education' | 'technologies' | 'experience' | 'projects'
+export type SectionsTypes = 'others' | 'education' | 'technologies' | 'experience' | 'projects' | 'introduction'
 
 export type SectionContentMap = {
     education: EducationInterface[]
@@ -8,6 +8,7 @@ export type SectionContentMap = {
     others: string[]
     technologies: string[]
     projects: string[]
+    introduction:string
 }
 
 export type SectionInterface = Record<SectionsTypes, { title: string, content?: SectionContentMap[SectionsTypes] }>

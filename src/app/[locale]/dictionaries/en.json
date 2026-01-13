@@ -18,6 +18,9 @@
     ],
     "resume": {
         "sections": {
+            "introduction":{
+                "content":"Focused on performance, maintainability, and user experience, I am committed to continuously learning the tools and practices needed to build reliable and scalable web solutions."
+            },
             "others": {
                 "title": "Others",
                 "content": [

@@ -25,8 +25,8 @@ const Page = async ({
 
   const getContent = <K extends SectionsTypes>(
     key: K
-  ): SectionContentMap[K] => {
-    if (!sections[key]?.content) return []
+  ): SectionContentMap[K] | undefined => {
+    if (!sections[key]?.content) return undefined
     return sections[key].content as SectionContentMap[K]
   }
 
@@ -53,7 +53,7 @@ const Page = async ({
           </ol>
           <h2 className={`${classesTitle} mb-2`}>{getTitle('others')}: </h2>
           <ol className="list-none ml-1 text-sm">
-            {getContent('others').map((s, i) => (
+            {getContent('others')?.map((s, i) => (
               <li
                 className={`inline-block sm:block ${i < getContent('others').length - 1 ? "after:content-[',']" : ""
                   } sm:after:content-['']`}
@@ -90,13 +90,11 @@ const Page = async ({
                 </LinkButton>)}
             </div>
             <p>
-              Focused on performance, maintainability, and user experience, I am
-              committed to continuously learning the tools and practices needed
-              to build reliable and scalable web solutions.
+              {getContent('introduction')}
             </p>
           </div>
           <h1 className={`${classesTitle} col-span-2`}>{getTitle('education')}:</h1>
-          {getContent('education').map((e, i: number) => (
+          {getContent('education')?.map((e, i: number) => (
             <div key={i} className="col-span-2">
               <div className="flex flex-col sm:flex-row sm:justify-between">
                 <p>
@@ -120,7 +118,7 @@ const Page = async ({
             </div>
           ))}
           <h1 className={`${classesTitle} col-span-2`}>{getTitle('experience')}:</h1>
-          {getContent('experience').map((e, i) => (
+          {getContent('experience')?.map((e, i) => (
             <div key={i} className="col-span-2">
               <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
                 <p>
