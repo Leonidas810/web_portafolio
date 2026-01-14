@@ -43,7 +43,7 @@ export default async function Page({ params }: PageInterface) {
   ];
 
   return (
-    <PageTemplate className="h-dvh bg-primary-500">
+    <PageTemplate className="h-dvh w-dvw overflow-auto bg-primary-500">
       <div className="h-full w-full grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 items-center justify-items-center">
         {/*Left */}
         <div>

@@ -1,15 +1,17 @@
 {
   "commons": {
     "labels": {
-      "aboutMe": "Acerca de mi",
+      "aboutMe": "Sobre mi",
       "myResume": "Mi resumen",
-      "resume":"Resumen",
+      "resume": "Resumen",
       "myWork": "Mi trabajo",
-      "work":"Work",
+      "work": "Work",
       "download": "Descargar",
       "projects": "Proyectos",
       "relevantKnowledge": "Conocimientos Relevantes",
-      "commingSoon":"Próximamente"
+      "commingSoon": "Próximamente",
+      "spanish": "Español",
+      "english": "Ingles"
     }
   },
   "pages": {

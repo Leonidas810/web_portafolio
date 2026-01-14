@@ -1,3 +1,4 @@
 import useWindowWidth from "./useWindowWidth";
+import useScrollHeight from "./useScrollHeight";
 
-export {useWindowWidth}
+export { useWindowWidth, useScrollHeight };
