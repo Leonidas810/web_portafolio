@@ -1,49 +1,46 @@
-import { IconTypes } from "@/components/atoms/Icon/Icon";
-
 import { Button, Icon, HeroIntro, HeroImg } from "@/components/atoms";
 import { LinkButton } from "@/components/molecules";
-import { Page as PageTemplate } from "@/templates/index"
+import { Page as PageTemplate } from "@/templates/index";
 
 //<--Dictionaries-->
-import { getDictionary } from './dictionaries'
+import { getDictionary } from "./dictionaries";
 
-type ButtonTypes = 'aboutMe' | 'myWork' | 'myResume'
+//<--Types-->
+import { type PageInterface } from "@/types/Page.types";
+import { type IconTypes } from "@/types/Icon.types";
+import { type ButtonTypes, DefaultButtonConfig } from "@/types/Button.types";
+import { type LinkButtonProps } from "@/components/molecules/LinkButton.molecule";
+import { type ButtonProps } from "@/components/atoms/Button.atom";
 
-export default async function Page({
-  params
-}: {
-  params: { locale: string };
-}) {
+type ButtonItem =
+  | (ButtonProps & { key: ButtonTypes; icon: IconTypes })
+  | (LinkButtonProps & { key: ButtonTypes; icon: IconTypes });
 
-  const { locale } = await params
-  const dict = await getDictionary(locale as 'es' | 'en')
+export default async function Page({ params }: PageInterface) {
+  const { locale } = await params;
+  const dict = await getDictionary(locale as "es" | "en");
+  const dictLabels = dict.commons.labels
+  const dictHeroIntro = dict.pages.hero.sections.intro
+  const dictHeroImg = dict.pages.hero.sections.imgText
 
-  const ButtonDefaultConfig: Partial<Record<ButtonTypes,
-    { href?: string, className?: string, icon: IconTypes }>> = {
-    'myResume': { href: 'resume', icon: 'paper' },
-    'myWork': { href: 'projects', className: 'col-span-2 md:col-span-1', icon: 'folder' },
-    'aboutMe': { icon: 'user' }
-  }
-
-  const Buttons: {
-    id: ButtonTypes
-    text: string;
-    icon: IconTypes;
-    href?: string;
-    className?: string;
-    onClick?: () => void
-  }[] = Object.keys(dict.buttons).map((k) => {
-    const key = k as ButtonTypes;
-    const config = ButtonDefaultConfig[key];
-    return {
-      id: key,
-      text: dict.buttons[key],
-      icon: config?.icon as IconTypes,
-      ...(config?.href ? { href: config.href } : {}),
-      ...(config?.className ? { className: config.className } : {}),
-    }
-  })
-
+  const Buttons: ButtonItem[] = [
+    {
+      key: "myResume",
+      children: dictLabels["myResume"],
+      ...DefaultButtonConfig["myResume"],
+    },
+    {
+      key: "myWork",
+      children: dictLabels["myWork"],
+      ...DefaultButtonConfig["myWork"],
+    },
+    {
+      className: "col-span-2 lg:col-span-1",
+      key: "aboutMe",
+      children: dictLabels["aboutMe"],
+      ...DefaultButtonConfig["aboutMe"],
+    },
+  ];
 
   return (
     <PageTemplate className="h-dvh bg-primary-500">
@@ -51,28 +48,38 @@ export default async function Page({
         {/*Left */}
         <div>
           <div className="grid gap-y-10">
-            <HeroIntro {...dict.heroIntro}/>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-4 z-10">
-              {Buttons.map(
-                (b, i) =>
-                  b?.href ? (
-                    <LinkButton key={i} href={b.href} {...b?.className ? { className: b.className } : {}} buttonClassName='w-full'>
-                      {b.text}
-                      <Icon name={b.icon} size="xl" className="ml-1" />
-                    </LinkButton>
-                  ) : (
-                    <Button onClick={b.onClick} key={i} {...b?.className ? { className: b.className } : {}}>
-                      {b.text}
-                      <Icon name={b.icon} size="xl" className="ml-1" />
-                    </Button>
-                  )
-              )}
+            <HeroIntro {...dictHeroIntro} />
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 z-10">
+              {Buttons.map((b) => {
+                const { key, icon, children } = b;
+                const href = "href" in b ? b.href : null;
+                return href ? (
+                  <LinkButton
+                    key={key}
+                    href={href}
+                    buttonClassName="w-full"
+                    {...(b?.className ? { className: b.className } : {})}
+                  >
+                    {children}
+                    <Icon name={icon} size="xl" className="ml-1" />
+                  </LinkButton>
+                ) : (
+                  <Button
+                    key={key}
+                    onClick={b.onClick}
+                    {...(b?.className ? { className: b.className } : {})}
+                  >
+                    {children}
+                    <Icon name={icon} size="xl" className="ml-1" />
+                  </Button>
+                );
+              })}
             </div>
           </div>
         </div>
         {/*Right */}
         <div className="z-10">
-          <HeroImg heroImgText={dict.heroImgText}/>
+          <HeroImg heroImgText={dictHeroImg} />
         </div>
         {/*Background */}
         <div className="absolute top-0 left-1/2 bg-primary-700 w-1/3 h-1/3 hidden md:block" />

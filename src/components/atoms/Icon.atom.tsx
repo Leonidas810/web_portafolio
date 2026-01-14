@@ -1,6 +1,6 @@
 import { Size } from "@/types/Common.types"
 
-import { type IconTypes, IconRecord } from "./Icon"
+import { type IconTypes, IconRecord } from "@/types/Icon.types"
 
 interface IconProps {
     name: IconTypes,

@@ -6,11 +6,16 @@ import { usePathname, useParams } from "next/navigation";
 
 import { useWindowWidth } from "@/hooks";
 
-import { isHomeRoute } from "@/utils/routing";
+import { isCurrentRoute, isHomeRoute } from "@/utils/routing";
 
-import { IconTypes } from "@/atoms/Icon/Icon";
+//<--Types-->
+import { RoutesInterface } from "@/types/resource/Routes.type";
 
-export const Navigate = () => {
+interface NavigateProps {
+  routes: RoutesInterface[];
+}
+
+export const Navigate = ({ routes }: NavigateProps) => {
   const pathname = usePathname();
   const { locale } = useParams<{ locale: string }>();
 
@@ -32,38 +37,23 @@ export const Navigate = () => {
 
   useEffect(() => {
     const closeMenu = () => {
-      setIsOpen(false)
-    }
+      setIsOpen(false);
+    };
     closeMenu();
-  }, [windowWidth, pathname])
+  }, [windowWidth, pathname]);
 
   const isMobile = windowWidth < 768;
   const isHeroSection = isHomeRoute(pathname, locale);
 
-  const routesMap: {
-    name: string;
-    label?: string;
-    icon?: IconTypes;
-    href: string;
-    className?: string;
-  }[] = [
-      {
-        name: "home",
-        icon: "home",
-        href: "/",
-        className: `${isMobile ? "block" : "hidden"}`
-      },
-      {
-        name: "resume",
-        label: "Resume",
-        href: "/resume",
-      },
-      {
-        name: "projects",
-        label: "Projects",
-        href: "/projects",
-      },
-    ];
+  const routesMap: RoutesInterface[] = [
+    ...routes,
+    {
+      name: "home",
+      icon: "home",
+      href: "/",
+      className: `${isMobile ? "block" : "hidden"}`,
+    },
+  ];
 
   return (
     <nav
@@ -71,22 +61,23 @@ export const Navigate = () => {
       className="fixed bottom-0 right-0 md:top-16 md:left-1/2 h-12 w-12 z-10"
     >
       <div
-        {...!isMobile ? { onMouseLeave: onCloseMenu } : {}}
+        {...(!isMobile ? { onMouseLeave: onCloseMenu } : {})}
         className="absolute bottom-5 md:bottom-[94%] right-0 md:right-1/2 -translate-x-1/3 md:translate-x-1/2 flex flex-col gap-y-2 items-end"
       >
         {/* Routes */}
         <ol className="md:absolute md:left-1/2 md:-translate-x-1/2 flex flex-col-reverse md:flex-row items-end md:items-center gap-y-2 md:gap-x-16">
           {routesMap.map((r, i) => (
-            <li key={i} {...r.className ? { className: r.className } : {}}>
+            <li key={i} {...(r.className ? { className: r.className } : {})}>
               <LinkButton
-                variant={isMobile ? 'primary' : 'ghost'}
-                disabled={pathname === r.href}
+                variant={isMobile ? "primary" : "ghost"}
+                disabled={isCurrentRoute(pathname, r.href, locale)}
                 href={r.href}
                 className={`transition-all duration-300 ease-out
-                ${isOpen
+                ${
+                  isOpen
                     ? "opacity-100 translate-y-0 scale-100"
                     : "opacity-0 translate-y-4 scale-95 pointer-events-none"
-                  }`}
+                }`}
               >
                 {r.label}
                 {r?.icon && <Icon name={r.icon} />}
@@ -95,20 +86,25 @@ export const Navigate = () => {
           ))}
         </ol>
         {/* Action menu */}
-        {isMobile ?
+        {isMobile ? (
           <Button
-            variant={'primary'}
-            className={`${isOpen
-              ? "scale-100"
-              : "scale-95"
-              }`}
-            onClick={onHandleMenu}>
+            variant={"primary"}
+            className={`${isOpen ? "scale-100" : "scale-95"}`}
+            onClick={onHandleMenu}
+          >
             <Icon name={isOpen ? "close" : "menu"} />
-          </Button> :
-          <LinkButton onMouseOver={onOpenMenu} variant="ghost" className="z-20" buttonClassName={`${isOpen ? 'duration-300 rotate-360' : ""}`} href="/">
+          </Button>
+        ) : (
+          <LinkButton
+            onMouseOver={onOpenMenu}
+            variant="ghost"
+            className="z-20"
+            buttonClassName={`${isOpen ? "duration-300 rotate-360" : ""}`}
+            href="/"
+          >
             <Icon name={isOpen ? "home" : "menu"} />
           </LinkButton>
-        }
+        )}
       </div>
     </nav>
   );
