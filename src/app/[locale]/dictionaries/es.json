@@ -1,0 +1,106 @@
+{
+  "commons": {
+    "labels": {
+      "aboutMe": "Sobre mi",
+      "myResume": "Mi resumen",
+      "resume": "Resumen",
+      "myWork": "Mi trabajo",
+      "work": "Work",
+      "download": "Descargar",
+      "projects": "Proyectos",
+      "relevantKnowledge": "Conocimientos Relevantes",
+      "commingSoon": "Próximamente",
+      "spanish": "Español",
+      "english": "Ingles"
+    }
+  },
+  "pages": {
+    "home": {
+      "sections": {
+        "introduction": {
+          "name": "Hola, Soy Leonardo Lopez P.",
+          "title": "Desarrollador",
+          "subTitle": "FullStack",
+          "content": [
+            "Apasionado por la tecnología y la creación de soluciones digitales que resuelven problemas del mundo real.",
+            "Con experiencia en la creación de aplicaciones funcionales y escalables, trabajando con confianza tanto en el desarrollo frontend como backend.",
+            "Impulsado por el aprendizaje continuo y la mejora constante, siempre explorando nuevas herramientas y tecnologías para ofrecer software limpio, eficiente y de alta calidad.",
+            "“Si puedes imaginarlo, puedes programarlo.” — Alejandro Taboada"
+          ]
+        }
+      }
+    },
+    "resume": {
+      "sections": {
+        "introduction": {
+          "content": "Enfocado en el rendimiento, la mantenibilidad y la experiencia de usuario, estoy comprometido con el aprendizaje continuo de las herramientas y prácticas necesarias para construir soluciones web confiables y escalables."
+        },
+        "others": {
+          "title": "Otros",
+          "content": [
+            "Figma",
+            "Diseño Web Responsivo",
+            "Rendimiento",
+            "Optimización",
+            "Pruebas de Software"
+          ]
+        },
+        "education": {
+          "title": "Educación",
+          "content": [
+            {
+              "name": "Licenciatura en Ingeniería en Sistemas Inteligentes",
+              "institute": "Universidad Autónoma de San Luis Potosí",
+              "date": "06/2020 – 06/2025",
+              "gap": 81.2,
+              "relevantKnowledge": [
+                "Desarrollo web y móvil",
+                "Gestión de bases de datos",
+                "Estructuras de datos",
+                "Programación orientada a objetos",
+                "Principios de ciberseguridad",
+                "Criptografía",
+                "Computación de alto rendimiento",
+                "Sistemas operativos",
+                "Diseño e implementación de redes",
+                "Complejidad algorítmica",
+                "y desarrollo aplicado de proyectos computacionales."
+              ]
+            }
+          ]
+        },
+        "technologies": {
+          "title": "Tecnologías principales"
+        },
+        "experience": {
+          "title": "Experiencia",
+          "content": [
+            {
+              "name": "Desarrollador Web Full Stack",
+              "date": "Enero 2025 - Presente",
+              "description": "Durante mi tiempo en la organización, fortalecí mi experiencia en el stack MERN mediante desarrollo práctico y aprendizaje continuo, guiado por la mentoría de profesionales experimentados. También desarrollé habilidades en administración de servidores Linux y contenedorización, lo que me permitió entregar soluciones más escalables, confiables y listas para producción.",
+              "institute": "CNS - IPICYT"
+            },
+            {
+              "name": "Practicante",
+              "date": "Octubre 2023 - Noviembre 2024",
+              "description": "Orquesté y desarrollé la infraestructura frontend, el diseño y la funcionalidad del proyecto LNC-2023-124: `Formación de profesionales en el uso y gestión de herramientas tecnológicas de supercómputo y centro de datos para abordar problemas de impacto social`",
+              "institute": "CNS - IPICYT"
+            }
+          ]
+        },
+        "projects": {
+          "title": "Proyectos",
+          "content": "Puede encontrar algo de mi trabajo aquí"
+        }
+      }
+    },
+    "projects": {
+      "sections": {
+        "introduction": {
+          "content": "Mira alguno de mis ultimos proyectos"
+        }
+      }
+    }
+  }
+}

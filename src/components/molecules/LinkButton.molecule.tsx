@@ -1,15 +1,14 @@
 import { Button } from "@/atoms/index";
 import Link from "next/link";
-import { CSSProperties, ReactNode } from "react";
+import { ReactNode } from "react";
 import { ButtonProps } from "../atoms/Button.atom";
 
-interface LinkButtonProps extends ButtonProps {
+export interface LinkButtonProps extends ButtonProps {
   href: string;
   className?: string;
   buttonClassName?: string;
   children: ReactNode;
-  style?: CSSProperties;
-  external?: boolean; // optional manual override
+  external?: boolean;
 }
 
 export const LinkButton = ({
