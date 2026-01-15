@@ -33,7 +33,7 @@
         "./src/components/molecules/*"
       ],
       "@/organism/*": [
-        "./src/components/organismFix/*"
+        "./src/components/organism/*"
       ],
       "@/templates/*": [
         "./src/components/templates/*"

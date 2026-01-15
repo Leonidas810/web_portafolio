@@ -12,7 +12,7 @@ import { type DefaultButtons, DefaultButtonConfig } from "@/types/Button.types";
 import { type LinkButtonProps } from "@/components/molecules/LinkButton.molecule";
 import { type ButtonProps } from "@/components/atoms/Button.atom";
 
-type ButtonItem =
+export type ButtonItem =
   | (ButtonProps & { key: DefaultButtons; icon: IconTypes })
   | (LinkButtonProps & { key: DefaultButtons; icon: IconTypes });
 
@@ -32,14 +32,14 @@ export default async function Page({ params }: PageInterface) {
       key: "myWork",
       children: dictLabels["myWork"],
       ...DefaultButtonConfig["myWork"],
-    },
-    {
-      className: "col-span-2 lg:col-span-1",
-      key: "aboutMe",
-      children: dictLabels["aboutMe"],
-      ...DefaultButtonConfig["aboutMe"],
-    },
+    }
   ];
+
+  const heroButton: ButtonItem = {
+    key: "aboutMe",
+    children: dictLabels["aboutMe"],
+    ...DefaultButtonConfig["aboutMe"],
+  }
 
   return (
     <PageTemplate className="h-dvh w-dvw overflow-auto bg-primary-500">
@@ -79,7 +79,7 @@ export default async function Page({ params }: PageInterface) {
         </div>
         {/*Right */}
         <div className="z-10">
-          <HeroImg heroImgText={content} />
+          <HeroImg heroImgText={content} heroButton={heroButton} />
         </div>
         {/*Background */}
         <div className="absolute top-0 left-1/2 bg-primary-700 w-1/3 h-1/3 hidden md:block" />

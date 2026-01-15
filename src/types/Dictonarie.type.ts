@@ -6,14 +6,15 @@ type Pages = 'home' | 'resume' | 'projects'
 
 type PagesKeys = 'sections'
 
-type SectionsOptions = 'others' | 'education' | 'technologies' | 'experience' | 'projects' | 'introduction'
+export type SectionsOptions = 'others' | 'education' | 'technologies' | 'experience' | 'projects' | 'introduction'
+
 
 
 type CommonContentMap = {
     labels: Record<string, string>
 }
 
-type SectionContentMap = {
+export type SectionContentMap = {
     education: EducationInterface[]
     experience: ExperienceInterface[]
     others: string[]
@@ -22,10 +23,13 @@ type SectionContentMap = {
     introduction: string | string[]
 }
 
+export type PageContentMap = {
+    sections: Record<SectionsOptions, { title?: string, name?: string, subTitle?: string, content?: SectionContentMap[SectionsOptions] }>
+}
 
 export interface DictionarieInterface {
     commons: {
         labels: CommonContentMap['labels']
     }
-    pages: Record<Pages, Record<PagesKeys, Partial<Record<SectionsOptions, { title?: string, name?: string, subTitle?: string, content?: SectionContentMap[SectionsOptions] }>>>>
+    pages: Record<Pages, Record<PagesKeys, Partial<PageContentMap[PagesKeys]>>>
 }

@@ -10,13 +10,13 @@ export function proxy(request: NextRequest) {
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
     if (pathnameHasLocale) return
-    
+
     const locale = defaultLocale
     request.nextUrl.pathname = `/${locale}${pathname}`
-    
+
     return NextResponse.redirect(request.nextUrl)
 }
 
 export const config = {
-    matcher: ['/((?!_next|favicon.ico).*)'],
+    matcher: ['/((?!_next|favicon.ico|img).*)'],
 }

@@ -29,8 +29,7 @@ export const Button = ({
   ;
 
   const variantMap: Record<Variant, string> = {
-    primary:
-      "text-primary-700 bg-white border border-primary-700 shadow-lg/15 hover:bg-blue-50 active:bg-blue-100",
+    primary: "text-primary-700 bg-white border border-primary-700 shadow-lg/15 hover:bg-blue-50 active:bg-blue-100",
     solid: "text-white bg-blue-600 hover:bg-blue-700",
     ghost: "bg-transparent text-primary-700 hover:bg-blue-50",
   };

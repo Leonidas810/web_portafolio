@@ -1,9 +1,9 @@
 import type { IconType } from "react-icons";
-import { AiOutlineFileText, AiOutlineFolderOpen, AiOutlineUser, AiOutlineFolder, AiOutlineExport, AiOutlineMenu, AiFillHome, AiOutlineCloseCircle,AiFillCaretUp,AiFillCaretDown   } from "react-icons/ai";
+import { AiOutlineFileText, AiOutlineFolderOpen, AiOutlineUser, AiOutlineFolder, AiOutlineExport, AiOutlineMenu, AiFillHome, AiOutlineCloseCircle, AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import { RiFileDownloadFill, RiGithubFill, RiLinkedinBoxFill } from "react-icons/ri";
 
 
-export type IconTypes = 'user' | 'paper' | 'folder' | 'openFolder' | 'download' | 'url' | 'menu' | 'home' | 'close' | 'github' | 'linkedin' | 'upArrow' | 'downArrow' | 'spanish' | 'english';
+export type IconTypes = 'user' | 'paper' | 'folder' | 'openFolder' | 'download' | 'url' | 'menu' | 'home' | 'close' | 'github' | 'linkedin' | 'upArrow' | 'downArrow' | 'spanish' | 'english' | 'close';
 
 export const IconRecord: Partial<Record<IconTypes, IconType>> = {
     user: AiOutlineUser,
@@ -17,8 +17,8 @@ export const IconRecord: Partial<Record<IconTypes, IconType>> = {
     close: AiOutlineCloseCircle,
     github: RiGithubFill,
     linkedin: RiLinkedinBoxFill,
-    upArrow:AiFillCaretUp ,
-    downArrow:AiFillCaretDown ,
-    spanish:AiFillCaretUp,
-    english:AiFillCaretDown
+    upArrow: AiFillCaretUp,
+    downArrow: AiFillCaretDown,
+    spanish: AiFillCaretUp,
+    english: AiFillCaretDown,
 };

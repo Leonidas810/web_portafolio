@@ -12,10 +12,9 @@ import { PageInterface } from "../inteface";
 import {
   technologies,
   contactMap,
-  type SectionsTypes,
-  type SectionInterface,
-  type SectionContentMap,
 } from "./interface";
+
+import { type SectionsOptions, type PageContentMap, SectionContentMap } from "@/types/Dictonarie.type";
 
 
 const Page = async ({ params }: PageInterface) => {
@@ -23,14 +22,14 @@ const Page = async ({ params }: PageInterface) => {
   const dict = await getDictionary(locale as "es" | "en");
   const dictLabels = dict.commons.labels;
 
-  const { sections }: { sections: SectionInterface } = dict.pages.resume;
+  const { sections }: { sections: PageContentMap['sections'] } = dict.pages.resume;
 
-  const getTitle = (key: SectionsTypes): string | undefined => {
+  const getTitle = (key: SectionsOptions): string | undefined => {
     if (!sections[key]?.title) return undefined;
     return sections[key].title;
   };
 
-  const getContent = <K extends SectionsTypes>(
+  const getContent = <K extends SectionsOptions>(
     key: K
   ): SectionContentMap[K] | undefined => {
     if (!sections[key]?.content) return undefined;
