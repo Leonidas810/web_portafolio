@@ -26,5 +26,5 @@ export function isCurrentRoute(
   locale?: string
 ) {
   if (!locale) return `${pathname}` === `${routesPath}`;
-  return `${pathname}` === `/${locale}${routesPath}`;
+  return `${pathname}` === `/${locale}/${routesPath}`;
 }

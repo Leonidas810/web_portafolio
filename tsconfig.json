@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,17 +23,33 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/atoms/*":["./src/components/atoms/*"],
-      "@/molecules/*":["./src/components/molecules/*"],
-      "@/organism/*":["./src/components/organism/*"],
-      "@/templates/*":["./src/components/templates/*"],
-      "@/types/*":["./src/types/*"],
-      "@/hooks/*":["./src/hooks/*"],
-      "@/providers/*":["./src/providers/*"],
-      "@/utils/*":["./src/utils/*"],
-
-
+      "@/*": [
+        "./src/*"
+      ],
+      "@/atoms/*": [
+        "./src/components/atoms/*"
+      ],
+      "@/molecules/*": [
+        "./src/components/molecules/*"
+      ],
+      "@/organism/*": [
+        "./src/components/organism/*"
+      ],
+      "@/templates/*": [
+        "./src/components/templates/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/providers/*": [
+        "./src/providers/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
     }
   },
   "include": [
@@ -40,5 +60,7 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,10 +1,10 @@
 import { IconTypes } from "./Icon.types";
 
-export type ButtonTypes = "aboutMe" | "myWork" | "myResume" | "download";
+export type DefaultButtons = "aboutMe" | "myWork" | "myResume" | "download";
 
 type ButtonConfig = { href?: string; icon: IconTypes };
 
-export const DefaultButtonConfig: Record<ButtonTypes, ButtonConfig> = {
+export const DefaultButtonConfig: Record<DefaultButtons, ButtonConfig> = {
   myResume: { href: "resume", icon: "paper" },
   myWork: { href: "projects", icon: "folder" },
   aboutMe: { icon: "user" },

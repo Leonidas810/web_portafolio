@@ -1,4 +1,6 @@
-import { IconTypes } from "@/types/Icon.types";
+import { ExperienceInterface } from "@/types/resource/Experience.types";
+import { EducationInterface } from "@/types/resource/Education.types";
+import { ContactInterface } from "@/types/resource/Contact.types";
 
 export type SectionsTypes = 'others' | 'education' | 'technologies' | 'experience' | 'projects' | 'introduction'
 
@@ -8,25 +10,10 @@ export type SectionContentMap = {
     others: string[]
     technologies: string[]
     projects: string
-    introduction:string
+    introduction: string
 }
 
 export type SectionInterface = Record<SectionsTypes, { title?: string, content?: SectionContentMap[SectionsTypes] }>
-
-interface EducationInterface {
-    name: string,
-    institute: string,
-    "date": string,
-    "gap": number,
-    "relevantKnowledge": string[]
-}
-
-interface ExperienceInterface {
-    "name": string,
-    "date": string,
-    "description": string,
-    "institute": string
-}
 
 export const technologies: string[] = [
     "CSS",
@@ -47,19 +34,15 @@ export const technologies: string[] = [
     "Docker"
 ]
 
-export const contactMap: {
-    label: string
-    icon: IconTypes,
-    href: string
-}[] = [
-        {
-            label: 'Github',
-            icon: 'github',
-            href: 'https://github.com/Leonidas810'
-        },
-        {
-            label: 'LinkedIn',
-            icon: 'linkedin',
-            href: 'https://www.linkedin.com/in/leonardo-lópez-pérez-1115a227a'
-        }
-    ]
+export const contactMap: ContactInterface[] = [
+    {
+        label: 'Github',
+        icon: 'github',
+        href: 'https://github.com/Leonidas810'
+    },
+    {
+        label: 'LinkedIn',
+        icon: 'linkedin',
+        href: 'https://www.linkedin.com/in/leonardo-lópez-pérez-1115a227a'
+    }
+]

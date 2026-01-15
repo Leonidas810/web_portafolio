@@ -1,24 +1,24 @@
-import { Button, Icon, HeroIntro, HeroImg } from "@/components/atoms";
-import { LinkButton } from "@/components/molecules";
+import { Button, Icon, HeroIntro, HeroImg } from "@/atoms/index";
+import { LinkButton } from "@/molecules/index";
 import { Page as PageTemplate } from "@/templates/index";
 
 //<--Dictionaries-->
 import { getDictionary } from "./dictionaries";
 
 //<--Types-->
-import { type PageInterface } from "@/types/Page.types";
+import { type PageInterface } from "./inteface";
 import { type IconTypes } from "@/types/Icon.types";
-import { type ButtonTypes, DefaultButtonConfig } from "@/types/Button.types";
+import { type DefaultButtons, DefaultButtonConfig } from "@/types/Button.types";
 import { type LinkButtonProps } from "@/components/molecules/LinkButton.molecule";
 import { type ButtonProps } from "@/components/atoms/Button.atom";
 
 type ButtonItem =
-  | (ButtonProps & { key: ButtonTypes; icon: IconTypes })
-  | (LinkButtonProps & { key: ButtonTypes; icon: IconTypes });
+  | (ButtonProps & { key: DefaultButtons; icon: IconTypes })
+  | (LinkButtonProps & { key: DefaultButtons; icon: IconTypes });
 
 export default async function Page({ params }: PageInterface) {
   const { locale } = await params;
-  const dict = await getDictionary(locale as "es" | "en");
+  const dict = await getDictionary(locale);
   const dictLabels = dict.commons.labels
   const dictHeroIntro = dict.pages.hero.sections.intro
   const dictHeroImg = dict.pages.hero.sections.imgText
@@ -28,13 +28,11 @@ export default async function Page({ params }: PageInterface) {
       key: "myResume",
       children: dictLabels["myResume"],
       ...DefaultButtonConfig["myResume"],
-      href: `/${locale}/${DefaultButtonConfig["myResume"].href}`,
     },
     {
       key: "myWork",
       children: dictLabels["myWork"],
       ...DefaultButtonConfig["myWork"],
-      href: `/${locale}/${DefaultButtonConfig["myWork"].href}`,
     },
     {
       className: "col-span-2 lg:col-span-1",
@@ -59,7 +57,7 @@ export default async function Page({ params }: PageInterface) {
                 return href ? (
                   <LinkButton
                     key={key}
-                    href={href}
+                    href={`${locale}/${href}`}
                     buttonClassName="w-full"
                     {...(b?.className ? { className: b.className } : {})}
                   >

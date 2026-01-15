@@ -3,15 +3,15 @@ import { TransitionProvider } from "@/providers/TransitionProvider";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "./dictionaries";
 
-import { Header } from "@/components/Organism";
+import { Header } from "@/components/organism/index";
+
+//<--Types-->
+import { LayaoutInterface } from "./inteface";
 
 export default async function DashboardLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+}: LayaoutInterface) {
   const { locale } = await params;
   if (!hasLocale(locale)) notFound();
   const dict = await getDictionary(locale)
@@ -19,7 +19,7 @@ export default async function DashboardLayout({
   return (
     <html lang={locale}>
       <body>
-        <Header dict={dict}/>
+        <Header dict={dict} />
         <TransitionProvider>
           <main>{children}</main>
         </TransitionProvider>

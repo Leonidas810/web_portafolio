@@ -10,6 +10,7 @@ import { useWindowWidth, useScrollHeight } from "@/hooks";
 
 //<--Types-->
 import { RoutesInterface } from "@/types/resource/Routes.type";
+import { ParamsInterface } from "@/types/Params.types";
 
 interface NavigateProps {
   dict: any;
@@ -21,21 +22,9 @@ export const Navigate = ({ dict }: NavigateProps) => {
   const scrollHeight = useScrollHeight();
 
   const pathname = usePathname();
-  const { locale } = useParams<{ locale: string }>();
+  const { locale } = useParams<{ locale: ParamsInterface['locale'] }>();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const onOpenMenu = () => {
-    setIsOpen(true);
-  };
-
-  const onCloseMenu = () => {
-    setIsOpen(false);
-  };
-
-  const onHandleMenu = () => {
-    setIsOpen((p) => !p);
-  };
 
   useEffect(() => {
     const closeMenu = () => {
@@ -52,17 +41,17 @@ export const Navigate = ({ dict }: NavigateProps) => {
     {
       name: "resume",
       label: dictLabel.resume,
-      href: `/${locale}/resume`,
+      href: `resume`,
     },
     {
       name: "projects",
       label: dictLabel.projects,
-      href: `/${locale}/projects`,
+      href: `projects`,
     },
     {
       name: "home",
       icon: "home",
-      href: `/${locale}`,
+      href: `/`,
       className: `${isMobile ? "block" : "hidden"}`,
     },
   ];
@@ -70,13 +59,13 @@ export const Navigate = ({ dict }: NavigateProps) => {
   return (
     <nav
       hidden={isHome}
-      {...(!isMobile ? { onMouseLeave: onCloseMenu } : {})}
+      {...(!isMobile ? { onMouseLeave: ()=>setIsOpen(false) } : {})}
       className="absolute bottom-5 md:bottom-0 right-0 md:right-1/2 -translate-x-1/3 md:translate-x-1/2 flex flex-col gap-y-2 items-end"
     >
       {/* Routes */}
       <ol
         className="md:absolute md:left-1/2 md:-translate-x-1/2 
-        flex flex-col-reverse md:flex-row items-end md:items-center gap-y-2 md:gap-x-16 h-full"
+        flex flex-col md:flex-row items-end md:items-center gap-y-2 md:gap-x-16 h-full"
       >
         {routesMap.map((r, i) => (
           <li key={i} {...(r.className ? { className: r.className } : {})}>
@@ -85,10 +74,9 @@ export const Navigate = ({ dict }: NavigateProps) => {
               disabled={isCurrentRoute(pathname, r.href, locale)}
               href={r.href}
               className={`transition-all duration-300 ease-out
-                ${
-                  isOpen
-                    ? "opacity-100 scale-100"
-                    : "opacity-0 scale-95 pointer-events-none"
+                ${isOpen
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-95 pointer-events-none"
                 }`}
             >
               {r.label}
@@ -102,13 +90,13 @@ export const Navigate = ({ dict }: NavigateProps) => {
         <Button
           variant={"primary"}
           className={`${isOpen ? "scale-100" : "scale-95"}`}
-          onClick={onHandleMenu}
+          onClick={()=>setIsOpen((p) => !p)}
         >
           <Icon name={isOpen ? "close" : "menu"} />
         </Button>
       ) : (
         <LinkButton
-          onMouseOver={onOpenMenu}
+          onMouseOver={() => setIsOpen(true)}
           variant={isSroll ? "primary" : "ghost"}
           className="z-20"
           buttonClassName={`${isOpen ? "duration-300 rotate-360" : ""}`}

@@ -8,7 +8,7 @@ import Link from "next/link";
 import { getDictionary } from "../dictionaries";
 
 //<--Types-->
-import { type PageInterface } from "@/types/Page.types";
+import { PageInterface } from "../inteface";
 import {
   technologies,
   contactMap,
@@ -16,6 +16,7 @@ import {
   type SectionInterface,
   type SectionContentMap,
 } from "./interface";
+
 
 const Page = async ({ params }: PageInterface) => {
   const { locale } = await params;
@@ -52,9 +53,8 @@ const Page = async ({ params }: PageInterface) => {
           <ol className="list-none sm:ml-1 text-sm">
             {technologies.map((s, i) => (
               <li
-                className={`inline-block sm:block ${
-                  i < technologies.length - 1 ? "after:content-[',']" : ""
-                } sm:after:content-['']`}
+                className={`inline-block sm:block ${i < technologies.length - 1 ? "after:content-[',']" : ""
+                  } sm:after:content-['']`}
                 key={i}
               >
                 {s}
@@ -65,11 +65,10 @@ const Page = async ({ params }: PageInterface) => {
           <ol className="list-none ml-1 text-sm">
             {getContent("others")?.map((s, i) => (
               <li
-                className={`inline-block sm:block ${
-                  i < (getContent("others")?.length ?? 0) - 1
-                    ? "after:content-[',']"
-                    : ""
-                } sm:after:content-['']`}
+                className={`inline-block sm:block ${i < (getContent("others")?.length ?? 0) - 1
+                  ? "after:content-[',']"
+                  : ""
+                  } sm:after:content-['']`}
                 key={i}
               >
                 {s}

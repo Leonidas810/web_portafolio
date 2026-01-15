@@ -4,13 +4,14 @@ import { Button, Icon } from "@/atoms/index";
 import { usePathname, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { isHomeRoute } from "@/utils/routing";
+import { LinkButton } from "@/molecules/index";
+
 
 //<--Hooks-->
 import { useScrollHeight, useWindowWidth } from "@/hooks";
-import { LinkButton } from "./LinkButton.molecule";
-import path from "path";
 
-type Locale = "en" | "es";
+//<--Types-->
+import { ParamsInterface } from "@/types/Params.types";
 
 interface LanguageSelectProps {
   dict: any;
@@ -22,12 +23,12 @@ export const LanguageSelect = ({ dict }: LanguageSelectProps) => {
 
   const dictLabel = dict.commons.labels;
   const pathname = usePathname();
-  const { locale } = useParams<{ locale: string }>();
+  const { locale } = useParams<{ locale: ParamsInterface['locale'] }>();
 
   const [isOpen, setIsOpen] = useState(false);
-  const currentLocale: Locale = pathname.startsWith("/es") ? "es" : "en";
+  const currentLocale: ParamsInterface['locale'] = pathname.startsWith("/es") ? "es" : "en";
 
-  const getPathWithLocale = (locale: Locale) => {
+  const getPathWithLocale = (locale: ParamsInterface['locale']) => {
     const segments = pathname.split("/").filter(Boolean);
 
     if (segments[0] === "en" || segments[0] === "es") {
@@ -48,7 +49,7 @@ export const LanguageSelect = ({ dict }: LanguageSelectProps) => {
   const isSroll = scrollHeight > 0;
 
   return (
-    <div className={`absolute right-5 ${isMobile ? "top-5" : "bottom-0"}`}>
+    <div className="absolute right-5 top-5 md:top-auto md:bottom-0">
       <Button
         variant={isHome ? "primary" : isSroll ? "primary" : "ghost"}
         size={isMobile ? "sm" : "md"}
@@ -60,7 +61,7 @@ export const LanguageSelect = ({ dict }: LanguageSelectProps) => {
       </Button>
 
       <div className={`absolute right-0 mt-2 w-28 rounded-lg border-2 border-primary-700 bg-white shadow-lg transition-all duration-300 ease-out ${isOpen ? "opacity-100 scale-100"
-                    : "opacity-0 scale-95 pointer-events-none"}`}>
+        : "opacity-0 scale-95 pointer-events-none"}`}>
         <LinkButton
           disabledOptions={{ hover: true, rounded: true }}
           className="w-full"
