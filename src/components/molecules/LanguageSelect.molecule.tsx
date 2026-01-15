@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Icon } from "@/atoms/index";
-import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { isHomeRoute } from "@/utils/routing";
@@ -9,6 +8,7 @@ import { isHomeRoute } from "@/utils/routing";
 //<--Hooks-->
 import { useScrollHeight, useWindowWidth } from "@/hooks";
 import { LinkButton } from "./LinkButton.molecule";
+import path from "path";
 
 type Locale = "en" | "es";
 
@@ -33,7 +33,6 @@ export const LanguageSelect = ({ dict }: LanguageSelectProps) => {
     if (segments[0] === "en" || segments[0] === "es") {
       segments.shift();
     }
-
     return `/${locale}/${segments.join("/")}`;
   };
 

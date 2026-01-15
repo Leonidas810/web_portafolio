@@ -52,17 +52,17 @@ export const Navigate = ({ dict }: NavigateProps) => {
     {
       name: "resume",
       label: dictLabel.resume,
-      href: "/resume",
+      href: `/${locale}/resume`,
     },
     {
       name: "projects",
       label: dictLabel.projects,
-      href: "/projects",
+      href: `/${locale}/projects`,
     },
     {
       name: "home",
       icon: "home",
-      href: "/",
+      href: `/${locale}`,
       className: `${isMobile ? "block" : "hidden"}`,
     },
   ];
@@ -112,7 +112,7 @@ export const Navigate = ({ dict }: NavigateProps) => {
           variant={isSroll ? "primary" : "ghost"}
           className="z-20"
           buttonClassName={`${isOpen ? "duration-300 rotate-360" : ""}`}
-          href="/"
+          href={`/${locale}`}
         >
           <Icon name={isOpen ? "home" : "menu"} />
         </LinkButton>

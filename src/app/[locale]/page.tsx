@@ -28,11 +28,13 @@ export default async function Page({ params }: PageInterface) {
       key: "myResume",
       children: dictLabels["myResume"],
       ...DefaultButtonConfig["myResume"],
+      href: `/${locale}/${DefaultButtonConfig["myResume"].href}`,
     },
     {
       key: "myWork",
       children: dictLabels["myWork"],
       ...DefaultButtonConfig["myWork"],
+      href: `/${locale}/${DefaultButtonConfig["myWork"].href}`,
     },
     {
       className: "col-span-2 lg:col-span-1",
@@ -53,6 +55,7 @@ export default async function Page({ params }: PageInterface) {
               {Buttons.map((b) => {
                 const { key, icon, children } = b;
                 const href = "href" in b ? b.href : null;
+
                 return href ? (
                   <LinkButton
                     key={key}
