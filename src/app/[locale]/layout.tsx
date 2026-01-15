@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "./dictionaries";
 import { DictionarieInterface } from '@/types/Dictonarie.type'
 
-import { Header } from "@/components/organism/index";
+import { Header } from "@/components/organismFix/index";
 
 //<--Types-->
 import { LayaoutInterface } from "./inteface";
