@@ -1,7 +1,7 @@
 import { Navigate, LanguageSelect } from "@/molecules/index";
-
+import { DictionarieInterface } from "@/types/Dictonarie.type";
 interface HeaderProps {
-  dict: unknown;
+  dict: DictionarieInterface;
 }
 
 export const Header = ({ dict }: HeaderProps) => {

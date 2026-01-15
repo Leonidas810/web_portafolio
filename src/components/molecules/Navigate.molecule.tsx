@@ -9,11 +9,12 @@ import { isCurrentRoute, isHomeRoute } from "@/utils/routing";
 import { useWindowWidth, useScrollHeight } from "@/hooks";
 
 //<--Types-->
-import { RoutesInterface } from "@/types/resource/Routes.type";
+import { RoutesInterface } from "@/types/routes/Routes.type";
 import { ParamsInterface } from "@/types/Params.types";
+import { DictionarieInterface } from "@/types/Dictonarie.type";
 
 interface NavigateProps {
-  dict: any;
+  dict: DictionarieInterface;
 }
 
 export const Navigate = ({ dict }: NavigateProps) => {

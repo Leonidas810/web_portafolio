@@ -20,8 +20,7 @@ export default async function Page({ params }: PageInterface) {
   const { locale } = await params;
   const dict = await getDictionary(locale);
   const dictLabels = dict.commons.labels
-  const dictHeroIntro = dict.pages.hero.sections.intro
-  const dictHeroImg = dict.pages.hero.sections.imgText
+  const { content, ...introduction } = dict.pages.home.sections.introduction
 
   const Buttons: ButtonItem[] = [
     {
@@ -48,7 +47,7 @@ export default async function Page({ params }: PageInterface) {
         {/*Left */}
         <div>
           <div className="grid gap-y-10">
-            <HeroIntro {...dictHeroIntro} />
+            <HeroIntro {...introduction} />
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 z-10">
               {Buttons.map((b) => {
                 const { key, icon, children } = b;
@@ -80,7 +79,7 @@ export default async function Page({ params }: PageInterface) {
         </div>
         {/*Right */}
         <div className="z-10">
-          <HeroImg heroImgText={dictHeroImg} />
+          <HeroImg heroImgText={content} />
         </div>
         {/*Background */}
         <div className="absolute top-0 left-1/2 bg-primary-700 w-1/3 h-1/3 hidden md:block" />

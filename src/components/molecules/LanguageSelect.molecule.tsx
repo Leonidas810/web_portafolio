@@ -12,9 +12,10 @@ import { useScrollHeight, useWindowWidth } from "@/hooks";
 
 //<--Types-->
 import { ParamsInterface } from "@/types/Params.types";
+import { DictionarieInterface } from "@/types/Dictonarie.type";
 
 interface LanguageSelectProps {
-  dict: any;
+  dict: DictionarieInterface;
 }
 
 export const LanguageSelect = ({ dict }: LanguageSelectProps) => {

@@ -15,19 +15,19 @@
     }
   },
   "pages": {
-    "hero": {
+    "home": {
       "sections": {
-        "intro": {
+        "introduction": {
           "name": "Hola, Soy Leonardo Lopez P.",
           "title": "Desarrollador",
-          "subTitle": "FullStack"
-        },
-        "imgText": [
-          "Apasionado por la tecnología y la creación de soluciones digitales que resuelven problemas del mundo real.",
-          "Con experiencia en la creación de aplicaciones funcionales y escalables, trabajando con confianza tanto en el desarrollo frontend como backend.",
-          "Impulsado por el aprendizaje continuo y la mejora constante, siempre explorando nuevas herramientas y tecnologías para ofrecer software limpio, eficiente y de alta calidad.",
-          "“Si puedes imaginarlo, puedes programarlo.” — Alejandro Taboada"
-        ]
+          "subTitle": "FullStack",
+          "content": [
+            "Apasionado por la tecnología y la creación de soluciones digitales que resuelven problemas del mundo real.",
+            "Con experiencia en la creación de aplicaciones funcionales y escalables, trabajando con confianza tanto en el desarrollo frontend como backend.",
+            "Impulsado por el aprendizaje continuo y la mejora constante, siempre explorando nuevas herramientas y tecnologías para ofrecer software limpio, eficiente y de alta calidad.",
+            "“Si puedes imaginarlo, puedes programarlo.” — Alejandro Taboada"
+          ]
+        }
       }
     },
     "resume": {

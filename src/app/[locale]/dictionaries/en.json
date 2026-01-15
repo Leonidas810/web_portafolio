@@ -3,31 +3,31 @@
     "labels": {
       "aboutMe": "About me",
       "myResume": "My resume",
-      "resume":"Resume",
+      "resume": "Resume",
       "myWork": "My work",
-      "work":"Work",
+      "work": "Work",
       "download": "Download",
       "projects": "Projects",
       "relevantKnowledge": "Relevant Knowledge",
       "commingSoon": "Comming soon",
-      "spanish":"Spanish",
-      "english":"English"
+      "spanish": "Spanish",
+      "english": "English"
     }
   },
   "pages": {
-    "hero": {
+    "home": {
       "sections": {
-        "intro": {
+        "introduction": {
           "name": "Hi, I'm Leonardo Lopez P.",
           "title": "FullStack",
-          "subTitle": "Developer"
-        },
-        "imgText": [
-          "Passionate about technology and the creation of digital solutions that solve real-world problems.",
-          "Experienced in building functional, scalable applications, working confidently across both frontend and backend development.",
-          "Driven by continuous learning and constant improvement, always exploring new tools and technologies to deliver clean, efficient, and high-quality software.",
-          "Si puedes imaginarlo, puedes programarlo.” — Alejandro Taboada"
-        ]
+          "subTitle": "Developer",
+          "content": [
+            "Passionate about technology and the creation of digital solutions that solve real-world problems.",
+            "Experienced in building functional, scalable applications, working confidently across both frontend and backend development.",
+            "Driven by continuous learning and constant improvement, always exploring new tools and technologies to deliver clean, efficient, and high-quality software.",
+            "Si puedes imaginarlo, puedes programarlo.” — Alejandro Taboada"
+          ]
+        }
       }
     },
     "resume": {

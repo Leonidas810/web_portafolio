@@ -1,12 +1,10 @@
 import { ParamsInterface } from "@/types/Params.types";
 
 export interface PageInterface {
-    params: { locale: ParamsInterface['locale'] }
+    params: Promise<{ locale: ParamsInterface['locale'] }>
 }
 
 export interface LayaoutInterface {
+    params: Promise<{ locale: string }>
     children: React.ReactNode
-    params: {
-        locale: ParamsInterface['locale']
-    }
 }

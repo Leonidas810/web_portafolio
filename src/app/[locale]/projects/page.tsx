@@ -5,7 +5,7 @@ import { Page as PageTemplate } from "@/templates/index";
 import { getDictionary } from "../dictionaries";
 
 //<--Types-->
-import { type PageInterface } from "@/types/Params.types";
+import { PageInterface } from "../inteface";
 import { type ProjectsInterface } from "@/types/resource/Projects.types";
 
 const Page = async ({ params }: PageInterface) => {
