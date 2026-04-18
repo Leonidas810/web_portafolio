@@ -6,6 +6,7 @@ export const technologies: string[] = [
     "Javascript",
     "Typescript",
     "React",
+    "Express",
     "React Native",
     "Next.js",
     "Vue.js",
@@ -16,6 +17,7 @@ export const technologies: string[] = [
     "Git/Github",
     "MySQL",
     "MongoDB",
+    "postgreSQL",
     "Docker"
 ]
 

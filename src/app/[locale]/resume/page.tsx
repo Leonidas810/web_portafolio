@@ -3,26 +3,26 @@ import { LinkButton } from "@/components/molecules";
 import { Page as PageTemplate } from "@/templates/index";
 import Link from "next/link";
 
-
 //<--Dictionarie-->
 import { getDictionary } from "../dictionaries";
 
 //<--Types-->
 import { PageInterface } from "../inteface";
+import { technologies, contactMap } from "./interface";
+
 import {
-  technologies,
-  contactMap,
-} from "./interface";
-
-import { type SectionsOptions, type PageContentMap, SectionContentMap } from "@/types/Dictonarie.type";
-
+  type SectionsOptions,
+  type PageContentMap,
+  SectionContentMap,
+} from "@/types/Dictonarie.type";
 
 const Page = async ({ params }: PageInterface) => {
   const { locale } = await params;
   const dict = await getDictionary(locale as "es" | "en");
   const dictLabels = dict.commons.labels;
 
-  const { sections }: { sections: PageContentMap['sections'] } = dict.pages.resume;
+  const { sections }: { sections: PageContentMap["sections"] } =
+    dict.pages.resume;
 
   const getTitle = (key: SectionsOptions): string | undefined => {
     if (!sections[key]?.title) return undefined;
@@ -30,7 +30,7 @@ const Page = async ({ params }: PageInterface) => {
   };
 
   const getContent = <K extends SectionsOptions>(
-    key: K
+    key: K,
   ): SectionContentMap[K] | undefined => {
     if (!sections[key]?.content) return undefined;
     return sections[key].content as SectionContentMap[K];
@@ -52,8 +52,9 @@ const Page = async ({ params }: PageInterface) => {
           <ol className="list-none sm:ml-1 text-sm">
             {technologies.map((s, i) => (
               <li
-                className={`inline-block sm:block ${i < technologies.length - 1 ? "after:content-[',']" : ""
-                  } sm:after:content-['']`}
+                className={`inline-block sm:block ${
+                  i < technologies.length - 1 ? "after:content-[',']" : ""
+                } sm:after:content-['']`}
                 key={i}
               >
                 {s}
@@ -64,10 +65,11 @@ const Page = async ({ params }: PageInterface) => {
           <ol className="list-none ml-1 text-sm">
             {getContent("others")?.map((s, i) => (
               <li
-                className={`inline-block sm:block ${i < (getContent("others")?.length ?? 0) - 1
-                  ? "after:content-[',']"
-                  : ""
-                  } sm:after:content-['']`}
+                className={`inline-block sm:block ${
+                  i < (getContent("others")?.length ?? 0) - 1
+                    ? "after:content-[',']"
+                    : ""
+                } sm:after:content-['']`}
                 key={i}
               >
                 {s}
@@ -83,10 +85,6 @@ const Page = async ({ params }: PageInterface) => {
                 <h1 className=" text-4xl">Leonardo López P.</h1>
                 <h2 className="block sm:hidden">Mexico, San Luis Potosi</h2>
               </div>
-              <LinkButton href="/pdf/cv.pdf" variant="ghost">
-                <Icon name="download" />
-                {dictLabels.download}
-              </LinkButton>
             </div>
             <div className="flex mb-2">
               {contactMap.map((c, i) => (
@@ -95,13 +93,15 @@ const Page = async ({ params }: PageInterface) => {
                   {c.label}
                 </LinkButton>
               ))}
+              <LinkButton href="pdf/cv.pdf" variant="ghost">
+                <Icon name="download" />
+                {dictLabels.download}
+              </LinkButton>
             </div>
             <p>{getContent("introduction")}</p>
           </div>
           {/*Education */}
-          <h1 className={`${classesTitle}`}>
-            {getTitle("education")}:
-          </h1>
+          <h1 className={`${classesTitle}`}>{getTitle("education")}:</h1>
           {getContent("education")?.map((e, i: number) => (
             <div key={i}>
               <div className="flex flex-col sm:flex-row sm:justify-between">
@@ -125,9 +125,7 @@ const Page = async ({ params }: PageInterface) => {
               )}
             </div>
           ))}
-          <h1 className={`${classesTitle}`}>
-            {getTitle("experience")}:
-          </h1>
+          <h1 className={`${classesTitle}`}>{getTitle("experience")}:</h1>
           {getContent("experience")?.map((e, i) => (
             <div key={i}>
               <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
@@ -139,11 +137,9 @@ const Page = async ({ params }: PageInterface) => {
               <p>{e.description}</p>
             </div>
           ))}
-          <h1 className={`${classesTitle}`}>
-            {getTitle("projects")}:
-          </h1>
+          <h1 className={`${classesTitle}`}>{getTitle("projects")}:</h1>
           <p>
-            {getContent('projects')}{" "}
+            {getContent("projects")}{" "}
             <Link href="/projects" className="text-blue-500 underline">
               {dictLabels.projects}
             </Link>
